@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "55625355321",
+    "project_id": "collagecompanion",
+    "storage_bucket": "collagecompanion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55625355321:android:83b0dab49ad71b2600bde8",
+        "android_client_info": {
+          "package_name": "com.example.collagecompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "55625355321-29qdbi1f8tlnf423eo9sipr4itpv2shh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.collagecompanion",
+            "certificate_hash": "a01a1b96b7568a480d5d1d9ce9d7cc65d443c4cb"
+          }
+        },
+        {
+          "client_id": "55625355321-gcgufao1i4jaicm5ef9sd3elulci3qda.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBB42_XUY1aKYRdZNhIe7llZ9AXS_uVsPw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "55625355321-gcgufao1i4jaicm5ef9sd3elulci3qda.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
