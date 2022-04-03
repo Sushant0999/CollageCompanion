@@ -17,9 +17,11 @@ import 'package:collagecompanion/data/faculty.dart';
 import 'package:collagecompanion/data/calender.dart';
 import 'package:collagecompanion/data/events.dart';
 import 'package:collagecompanion/data/books.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -69,5 +71,18 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class AuthWrapper extends StatelessWidget {
+  const AuthWrapper({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User>();
+
+    // ignore: unnecessary_null_comparison
+    if (firebaseUser != null) {
+      return const HomePage();
+    }
+    return const Login();
+  }
+}
 //flutter run --no-sound-null-safety
