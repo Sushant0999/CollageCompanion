@@ -18,12 +18,11 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKeyEmail = GlobalKey<FormState>();
   final _formKeyPass = GlobalKey<FormState>();
+
   //key for form
   final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    // final double height = MediaQuery.of(context).size.height;
-
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passController = TextEditingController();
 
@@ -63,6 +62,7 @@ class _LoginState extends State<Login> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 key: _formKeyEmail,
                 child: TextFormField(
+                  controller: emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
                     prefixIcon: const Icon(FontAwesomeIcons.user),
@@ -83,9 +83,9 @@ class _LoginState extends State<Login> {
                     }
                     // return null;
                   },
-                  onSaved: (value) {
-                    emailController.text = value!;
-                  },
+                  // onSaved: (value) {
+                  //   emailController.text = value!;
+                  // },
                   textInputAction: TextInputAction.next,
                 ),
               ),
@@ -95,6 +95,7 @@ class _LoginState extends State<Login> {
               child: Form(
                 key: _formKeyPass,
                 child: TextFormField(
+                  controller: passController,
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',

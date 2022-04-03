@@ -1,6 +1,7 @@
 import 'package:collagecompanion/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class Profile extends StatefulWidget {
 }
 
 class ProfileState extends State<Profile> {
+  final _auth = FirebaseAuth.instance;
   String name = 'Sushant Raj';
   String urn = '190280118';
   String crn = ' 194113';
@@ -29,10 +31,11 @@ class ProfileState extends State<Profile> {
           TextButton(
             onPressed: () {
               setState(() {
+                signOff();
                 Navigator.pushNamed(context, MyRoutes.loginRoute);
               });
             },
-            child: Text(
+            child: const Text(
               'LOGOUT',
               style: TextStyle(fontSize: 20),
             ),
@@ -111,4 +114,8 @@ class ProfileState extends State<Profile> {
           ],
         ),
       );
+
+  Future<void> signOff() async {
+    await _auth.signOut();
+  }
 }
