@@ -33,26 +33,26 @@ class _LoginState extends State<Login> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Container(
-              margin: EdgeInsets.all(20),
-              child: CircleAvatar(
+              margin: const EdgeInsets.all(20),
+              child: const CircleAvatar(
                 foregroundImage: AssetImage('images/icons/splashScreen.png'),
                 radius: 60,
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(20, 20, 20, 5),
-              child: Text(
+              margin: const EdgeInsets.fromLTRB(20, 20, 20, 5),
+              child: const Text(
                 'Proceed with your',
                 style: TextStyle(fontSize: 20),
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
-              child: Text(
+              margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+              child: const Text(
                 'Login ',
                 style: TextStyle(fontSize: 40),
               ),
@@ -65,8 +65,8 @@ class _LoginState extends State<Login> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Email',
-                    prefixIcon: Icon(FontAwesomeIcons.user),
-                    contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    prefixIcon: const Icon(FontAwesomeIcons.user),
+                    contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -81,7 +81,7 @@ class _LoginState extends State<Login> {
                         .hasMatch(value)) {
                       return "Enter a valid email";
                     }
-                    return null;
+                    // return null;
                   },
                   onSaved: (value) {
                     emailController.text = value!;
@@ -98,8 +98,8 @@ class _LoginState extends State<Login> {
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    prefixIcon: Icon(FontAwesomeIcons.key),
-                    contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    prefixIcon: const Icon(FontAwesomeIcons.key),
+                    contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -126,8 +126,7 @@ class _LoginState extends State<Login> {
               child: GestureDetector(
                 onTap: () {
                   setState(() async {
-                    // signIn(emailController.text, passController.text);
-                    Navigator.pushNamed(context, MyRoutes.homeRoute);
+                    await signIn(emailController.text, passController.text);
                   });
                 },
                 child: Icon(
@@ -138,13 +137,13 @@ class _LoginState extends State<Login> {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
               alignment: Alignment.centerRight,
               child: TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, MyRoutes.forgotpasswordRoute);
                 },
-                child: Text(
+                child: const Text(
                   'Forgot Password?',
                   style: TextStyle(fontSize: 15),
                 ),
@@ -153,12 +152,12 @@ class _LoginState extends State<Login> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('New User?'),
+                const Text('New User?'),
                 TextButton(
                   onPressed: () {
                     Navigator.pushNamed(context, MyRoutes.signupRoute);
                   },
-                  child: Text(
+                  child: const Text(
                     'Sign Up',
                     style: TextStyle(fontSize: 15),
                   ),
@@ -172,7 +171,7 @@ class _LoginState extends State<Login> {
   }
 
   //login function
-  void signIn(String email, String password) async {
+  Future<void> signIn(String email, String password) async {
     try {
       if (_formKeyEmail.currentState!.validate() &&
           _formKeyPass.currentState!.validate()) {
@@ -185,11 +184,9 @@ class _LoginState extends State<Login> {
       }
     } on FirebaseAuthException catch (error) {
       Fluttertoast.showToast(msg: 'Failed With Error Code: ${error.code}');
+      Fluttertoast.showToast(msg: email.toString() + " " + password.toString());
+      Fluttertoast.showToast(msg: error.toString());
+      print(error.toString());
     }
   }
 }
-
-
-     //     .catchError((e) {
-      //   Fluttertoast.showToast(msg: e!.toString());
-      // });

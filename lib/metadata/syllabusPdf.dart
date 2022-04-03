@@ -26,7 +26,7 @@ class _SyllabusPdfState extends State<SyllabusPdf> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "PDFView",
+          "Syllabus",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),

@@ -26,19 +26,16 @@ class _FacultyState extends State<Faculty> {
       // backgroundColor: Colors.amber,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          SizedBox(
-            height: 20,
-          ),
           Text(
             '  Professors',
             style: optionStyle,
           ),
           buildContainer1(),
-          SizedBox(
-            height: 20,
-          ),
+          // SizedBox(
+          //   height: 10,
+          // ),
           Text(
             '  Asst. Professors',
             style: optionStyle,
