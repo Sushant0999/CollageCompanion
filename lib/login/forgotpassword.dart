@@ -45,7 +45,34 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),
           ),
         );
+
+    final signUpButton = Material(
+      elevation: 5,
+      borderRadius: BorderRadius.circular(30),
+      color: Colors.blueAccent,
+      child: MaterialButton(
+        padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
+        onPressed: () {},
+        child: Text(
+          "SignUp",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.blueAccent),
+          onPressed: () {
+            // passing this to our root
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
@@ -67,13 +94,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
             ),
             buildForm(),
-            InkWell(
-              splashColor: Colors.pink,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Icon(FontAwesomeIcons.arrowRight),
-              ),
-            ),
+            Center(child: signUpButton),
+            // InkWell(
+            //   splashColor: Colors.pink,
+            //   child: ElevatedButton(
+            //     onPressed: () {},
+            //     child: Icon(FontAwesomeIcons.arrowRight),
+            //   ),
+            // ),
           ],
         ),
       ),

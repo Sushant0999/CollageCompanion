@@ -9,7 +9,6 @@ class Updates extends StatefulWidget {
 }
 
 class _UpdatesState extends State<Updates> {
-  final urlImages = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +50,7 @@ class _UpdatesState extends State<Updates> {
           dotSize: 4,
           showIndicator: true,
           overlayShadow: false,
-          radius: Radius.circular(20),
+          radius: const Radius.circular(20),
           dotHorizontalPadding: 20,
           dotVerticalPadding: 20,
           dotBgColor: Colors.transparent,

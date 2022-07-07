@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collagecompanion/login/login.dart';
+import 'package:collagecompanion/modals/userModals.dart';
 import 'package:collagecompanion/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,14 +14,27 @@ class Profile extends StatefulWidget {
 }
 
 class ProfileState extends State<Profile> {
-  final _auth = FirebaseAuth.instance;
-  String name = 'Sushant Raj';
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModals loggedUser = UserModals();
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      loggedUser = UserModals.fromMap(value.data());
+      setState(() {});
+    });
+  }
+
+  // String name = "{$loggedUser.name}";
   String urn = '190280118';
-  String crn = ' 194113';
   String branch = 'CSE';
-  String batch = '2K19';
+  String batch = '2019';
   static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.normal);
+      TextStyle(fontSize: 15, fontWeight: FontWeight.normal);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +47,8 @@ class ProfileState extends State<Profile> {
           TextButton(
             onPressed: () {
               setState(() {
-                signOff();
+                // signOff();
+                logout(context);
                 Navigator.pushNamed(context, MyRoutes.loginRoute);
               });
             },
@@ -54,8 +71,8 @@ class ProfileState extends State<Profile> {
               ),
               child: Column(
                 children: [
-                  showData(FontAwesomeIcons.user, name),
-                  showData(FontAwesomeIcons.university, urn + ',' + crn),
+                  showData(FontAwesomeIcons.user, "{$loggedUser.name}"),
+                  showData(FontAwesomeIcons.university, urn),
                   showData(FontAwesomeIcons.table, batch),
                   showData(FontAwesomeIcons.networkWired, branch),
                 ],
@@ -115,7 +132,9 @@ class ProfileState extends State<Profile> {
         ),
       );
 
-  Future<void> signOff() async {
-    await _auth.signOut();
+  Future<void> logout(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => Login()));
   }
 }

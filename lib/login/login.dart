@@ -26,6 +26,23 @@ class _LoginState extends State<Login> {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passController = TextEditingController();
 
+    final signUpButton = Material(
+      elevation: 5,
+      borderRadius: BorderRadius.circular(30),
+      color: Colors.blueAccent,
+      child: MaterialButton(
+        padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+        onPressed: () async {
+          await signIn(emailController.text, passController.text);
+        },
+        child: const Text(
+          "Sign In",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -122,21 +139,25 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-            Container(
-              alignment: Alignment.center,
-              child: GestureDetector(
-                onTap: () {
-                  setState(() async {
-                    await signIn(emailController.text, passController.text);
-                  });
-                },
-                child: Icon(
-                  FontAwesomeIcons.arrowCircleRight,
-                  color: Colors.blue.shade500,
-                  size: 40,
-                ),
-              ),
+            Center(
+              child: signUpButton,
             ),
+            // Container(
+            //   alignment: Alignment.center,
+            //   child: GestureDetector(
+            //     onTap: () {
+            //       setState(() async {
+            //         await signIn(emailController.text, passController.text);
+            //       });
+            //     },
+            //     child: Padding(
+            //       padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+            //       child: Text(
+            //         'Sign In',
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Container(
               margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
               alignment: Alignment.centerRight,

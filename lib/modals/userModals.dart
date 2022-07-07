@@ -1,15 +1,15 @@
 class UserModals {
   String? name;
-  int? rollNo;
   String? email;
+  String? uid;
 
-  UserModals({this.name, this.rollNo, this.email});
+  UserModals({this.name, this.uid, this.email});
 
   //data from server
   factory UserModals.fromMap(map) {
     return UserModals(
       name: map['name'],
-      rollNo: map['rollNo'],
+      uid: map['uid'],
       email: map['email'],
     );
   }
@@ -18,7 +18,7 @@ class UserModals {
   Map<String, dynamic> toMap() {
     return {
       'name': name,
-      'rollNo': rollNo,
+      'uid': uid,
       'email': email,
     };
   }
