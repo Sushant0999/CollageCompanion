@@ -1,4 +1,9 @@
 ####This Project is a Universirty App#### -->
+Built in flutter using firebase for backend.
+
+Login (Added)
+Account Creation (Added)
+
 Features
 -->Academic Calander
 -->E-Books
