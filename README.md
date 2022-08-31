@@ -1,15 +1,15 @@
-####This Project is a Universirty App#### -->
+----------This Project is a Universirty App----------<br>-->
 Built in flutter using firebase for backend.
 
 Login (Added) <br>
 Account Creation (Added)
 
 Features
--->Academic Calander
--->E-Books
--->Events
--->FAQ
--->Faculty Data
--->Hall Of Fame
--->Previus Question Papers
--->Syllabus
+<br>-->Academic Calander<br>
+-->E-Books<br>
+-->Events<br>
+-->FAQ<br>
+-->Faculty Data<br>
+-->Hall Of Fame<br>
+-->Previus Question Papers<br>
+-->Syllabus<br>
